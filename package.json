@@ -1,0 +1,30 @@
+{
+  "name": "matrix-sdk-fasade",
+  "version": "0.0.1",
+  "description": "fasade for matrix-js-sdk for bot building",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "sdk",
+    "bot",
+    "fasade",
+    "js",
+    "matrix",
+    "riot",
+    "nodejs"
+  ],
+  "author": "grigori-gru",
+  "license": "ISC",
+  "dependencies": {
+    "matrix-js-sdk": "mobitel-ltd/matrix-js-sdk",
+    "winston": "^2.4.0",
+    "winston-daily-rotate-file": "^1.7.2"
+  },
+  "devDependencies": {
+    "eslint-config-google": "^0.11.0",
+    "eslint-plugin-chai-friendly": "0.4.1",
+    "eslint": "latest"
+  }
+}
