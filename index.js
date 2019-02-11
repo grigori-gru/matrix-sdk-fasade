@@ -159,7 +159,7 @@ module.exports = class Matrix {
 
         this.client.on('sync', (state, prevState, data) => {
             this._removeListener('Room.timeline', this.timelineHandler, this.client);
-            this._removeListener('event', this._inviteBot, this.client);
+            this._removeListener('event', this._inviteBot.bind(this), this.client);
 
             if (state !== 'SYNCING' || prevState !== 'SYNCING') {
                 this.logger.warn(`state: ${state}`);
@@ -167,7 +167,7 @@ module.exports = class Matrix {
             }
         });
 
-        this.client.on('event', this._inviteBot);
+        this.client.on('event', this._inviteBot.bind(this));
 
         return this.client;
     }
