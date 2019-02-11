@@ -1,6 +1,6 @@
 {
   "name": "matrix-sdk-fasade",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "fasade for matrix-js-sdk for bot building",
   "main": "index.js",
   "scripts": {
@@ -23,8 +23,7 @@
   "license": "ISC",
   "dependencies": {
     "matrix-js-sdk": "mobitel-ltd/matrix-js-sdk",
-    "winston": "^2.4.0",
-    "winston-daily-rotate-file": "^1.7.2"
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "eslint-config-google": "^0.12.0",

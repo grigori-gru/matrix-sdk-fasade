@@ -1,4 +1,4 @@
-const logger = require('./logger.js');
+const defaultLogger = require('./logger.js');
 const matrixSdk = require('matrix-js-sdk');
 
 const getEvent = content => ({
@@ -13,10 +13,10 @@ module.exports = class Matrix {
      * @param  {Object} {config config object
      * @param  {Object} sdk=matrixSdk} matrix sdk lib, by default - https://github.com/matrix-org/matrix-js-sdk
      * @param  {function} timelineHandler handler for timeline events
-     * @param  {Boolean} logger turn on logger, by default is true
-     * @param  {Object|undefined} loggerConfig config for logger
+    //  * @param  {Boolean} loggerOn turn on logger, by default is true
+     * @param  {function|undefined} logger custom logger
      */
-    constructor({config, sdk = matrixSdk, timelineHandler, loggerOn = true, loggerConfig}) {
+    constructor({config, sdk = matrixSdk, timelineHandler, logger}) {
         this.timelineHandler = timelineHandler;
         this.config = config;
         this.sdk = sdk;
@@ -26,7 +26,7 @@ module.exports = class Matrix {
         this.baseUrl = `https://${config.domain}`;
         this.userId = `@${config.user}:${config.domain}`;
         this.postfix = `:${config.domain}`.length;
-        this.logger = logger(module, loggerConfig);
+        this.logger = (logger || defaultLogger)('matrix-api');
     }
 
     /**
