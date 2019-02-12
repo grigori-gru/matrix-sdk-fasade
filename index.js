@@ -16,7 +16,7 @@ module.exports = class Matrix {
     //  * @param  {Boolean} loggerOn turn on logger, by default is true
      * @param  {function|undefined} logger custom logger
      */
-    constructor({config, sdk = matrixSdk, timelineHandler, logger}) {
+    constructor({config, sdk = matrixSdk, timelineHandler, logger = defaultLogger}) {
         this.timelineHandler = timelineHandler;
         this.config = config;
         this.sdk = sdk;
@@ -26,7 +26,7 @@ module.exports = class Matrix {
         this.baseUrl = `https://${config.domain}`;
         this.userId = `@${config.user}:${config.domain}`;
         this.postfix = `:${config.domain}`.length;
-        this.logger = (logger || defaultLogger)('matrix-api');
+        this.logger = logger('matrix-api');
     }
 
     /**
