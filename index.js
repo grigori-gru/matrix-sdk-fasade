@@ -93,7 +93,7 @@ module.exports = class Matrix {
      * @private
      * @returns {Promise} connected MatrixClient
      */
-    async _getClient() {
+    async _startClient() {
         try {
             await this._createClient();
             const {pollTimeout} = this.config;
@@ -172,6 +172,13 @@ module.exports = class Matrix {
         return this.client;
     }
 
+    /**
+     * @returns {Object} matrix client
+     */
+    getClient() {
+        return this.client;
+    }
+
 
     /**
      * @returns {Boolean} connect status
@@ -190,7 +197,7 @@ module.exports = class Matrix {
      */
     async connect() {
         try {
-            await this._getClient();
+            await this._startClient();
 
             return this._handler();
         } catch (err) {
